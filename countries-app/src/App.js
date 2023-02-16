@@ -10,17 +10,13 @@ function App() {
       .then((res) => res.json())
       .then((allData) => getData(allData));
   }, []);
-
+  console.log(data);
   return (
     <>
       <Header />
-      <div className="container d-flex flex-wrap gap-4 my-4">
+      <div className="container d-flex flex-wrap my-4 justify-content-between gap-5 p-0">
         {data.map((country, index) => (
-          <CountryCard
-            key={index}
-            src={country.flags.png}
-            alt={country.name.official}
-          />
+          <CountryCard key={index} countryData={country} />
         ))}
       </div>
     </>
