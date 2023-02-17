@@ -5,7 +5,7 @@ function CountryDetails(props) {
         <strong className="country-name-text-overflow">{props.name}</strong>
       </h5>
       <p className="mb-1 ">
-        <strong>Population:</strong> {props.population}
+        <strong>Population:</strong> {props.population.toLocaleString("en-US")}
       </p>
       <p className="mb-1">
         <strong>Region:</strong> {props.region}
