@@ -1,8 +1,6 @@
 import CountryDetails from "../CountryDetails/CountryDetails";
 
 function CountryCard(props) {
-  console.log(props.countryData);
-
   return (
     <div className="shadow d-flex flex-column pointer">
       <img
@@ -15,6 +13,7 @@ function CountryCard(props) {
         population={props.countryData.population}
         region={props.countryData.region}
         capital={props.countryData.capital}
+        darkMode={props.darkMode}
       />
     </div>
   );

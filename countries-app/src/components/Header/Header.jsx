@@ -1,10 +1,15 @@
 import DarkMode from "../DarkMode/DarkMode";
-function Header() {
+
+function Header({ changeTheme, darkMode }) {
   return (
-    <div className="navbar navbar-expand-md navbar-dark sticky-top bg-white">
+    <div
+      className={`navbar navbar-expand-md sticky-top ${
+        darkMode ? "dark-cards" : "light-cards"
+      }`}
+    >
       <div className="container p-0">
         <h4 className="my-0 py-2">Where in the world?</h4>
-        <DarkMode />
+        <DarkMode changeTheme={changeTheme} darkMode={darkMode} />
       </div>
     </div>
   );
