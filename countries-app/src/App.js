@@ -8,6 +8,7 @@ function App() {
   const [data, getData] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
+  const [region, setRegion] = useState("");
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -19,22 +20,44 @@ function App() {
   }, []);
 
   function countriesFilter(region) {
+    setRegion(region);
     getData(filtered.filter((country) => country.region === region));
   }
 
+  // getData((prevData) => {
+  //   if (region !== "") {
+  //     return prevData
+  //       .filter((c) => c.region === region)
+  //       .filter((c) => c)
+  //       .filter(
+  //         (country) =>
+  //           country.name.common
+  //             .toLowerCase()
+  //             .includes(input.trim().toLowerCase()) ||
+  //           (country.capital &&
+  //             country.capital[0]
+  //               .toLowerCase()
+  //               .includes(input.trim().toLowerCase()))
+  //       );
+  //   }
+  //   return prevData;
+  // });
+  //.filter((country) => country.region === region)
+
   function searchCountyBox(input) {
-    console.log(data);
     getData(
-      filtered.filter(
-        (country) =>
-          country.name.common
-            .toLowerCase()
-            .includes(input.trim().toLowerCase()) ||
-          (country.capital &&
-            country.capital[0]
+      filtered
+        .filter((country) => (region ? country.region === region : country))
+        .filter(
+          (country) =>
+            country.name.common
               .toLowerCase()
-              .includes(input.trim().toLowerCase()))
-      )
+              .includes(input.trim().toLowerCase()) ||
+            (country.capital &&
+              country.capital[0]
+                .toLowerCase()
+                .includes(input.trim().toLowerCase()))
+        )
     );
   }
 
