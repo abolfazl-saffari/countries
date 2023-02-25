@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CountryCard from "./components/CountryCard/CountryCard";
 import Header from "./components/Header/Header";
@@ -52,11 +53,11 @@ function App() {
           (country) =>
             country.name.common
               .toLowerCase()
-              .includes(input.trim().toLowerCase()) ||
+              .startsWith(input.trim().toLowerCase()) ||
             (country.capital &&
               country.capital[0]
                 .toLowerCase()
-                .includes(input.trim().toLowerCase()))
+                .startsWith(input.trim().toLowerCase()))
         )
     );
   }
@@ -83,7 +84,9 @@ function App() {
       </div>
       <div className="container d-flex flex-wrap my-5 justify-content-between gap-5 p-0">
         {data.map((country, index) => (
-          <CountryCard key={index} countryData={country} darkMode={darkMode} />
+          <Link key={index} to={`/name/${country.name.common}`}>
+            <CountryCard countryData={country} darkMode={darkMode} />
+          </Link>
         ))}
       </div>
     </>

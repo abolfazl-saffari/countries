@@ -1,7 +1,13 @@
-img {
+.card-img {
   width: 275px;
   height: 175px;
   object-fit: fill;
+}
+
+.single-country {
+  width: 550px;
+  height: 350px;
+  object-fit: cover;
 }
 
 .pointer {
@@ -44,4 +50,9 @@ img {
 
 input.dark-cards::placeholder {
   color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
 }
