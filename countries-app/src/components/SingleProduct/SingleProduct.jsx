@@ -7,15 +7,35 @@ import { Link } from "react-router-dom";
 function SingleProduct() {
   const params = useParams();
   const [singleCountryData, setSingleCountryData] = useState([]);
+  const [nativeName, setNativeName] = useState("");
+  const [population, setPopulation] = useState("");
+  const [region, setRegion] = useState("");
+  const [subRegion, setSubRegion] = useState("");
+  const [capital, setCapital] = useState("");
+  const [topLevelDomain, setTopLevelDomain] = useState("");
+  const [currencies, setCurrencies] = useState("");
+  const [languages, setLanguages] = useState([]);
+  const [borderCountries, setBorderCountries] = useState([]);
 
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/name/${params.countryName}`)
       .then((res) => res.json())
       .then((allData) => {
         setSingleCountryData(allData);
+        setNativeName(allData[0].name.official);
+        setPopulation(allData[0].population);
+        setRegion(allData[0].region);
+        setSubRegion(allData[0].subregion);
+        setCapital(allData[0].capital);
+        setTopLevelDomain(allData[0].tld);
+        setCurrencies(allData[0].currencies);
+        setLanguages(Object.values(allData[0].languages));
+        setBorderCountries(allData[0].borders);
       });
   }, [params.countryName]);
-  console.log(singleCountryData);
+  console.log(singleCountryData[0]);
+  console.log(languages);
+
   return (
     <>
       <Header />
@@ -39,39 +59,58 @@ function SingleProduct() {
               <div className="row">
                 <div className="col-6">
                   <p>
-                    <strong>Native name :</strong> belgue
+                    <strong>Native name : </strong>
+                    {nativeName}
                   </p>
                   <p>
-                    <strong>population :</strong>21354354354
+                    <strong>population : </strong>
+                    {population.toLocaleString("en-US")}
                   </p>
                   <p>
-                    <strong>region :</strong> euro
+                    <strong>region : </strong>
+                    {region}
                   </p>
                   <p>
-                    <strong>sub region :</strong>western euro
+                    <strong>sub region : </strong>
+                    {subRegion}
                   </p>
                   <p>
-                    <strong>capital :</strong>brusel
+                    <strong>capital : </strong>
+                    {capital}
                   </p>
                 </div>
                 <div className="col-6">
                   <p>
-                    <strong>top level domain:</strong>be
+                    <strong>top level domain : </strong>
+                    {topLevelDomain}
                   </p>
                   <p>
                     <strong>currencies :</strong> euro
                   </p>
                   <p>
-                    <strong>languages:</strong> dutch,french,english
+                    <strong>languages : </strong>
+                    {languages.map((language) => (
+                      <span>{language}, </span>
+                    ))}
                   </p>
                 </div>
               </div>
               <div className="d-flex align-items-center gap-3">
                 <strong className="m-0">border countries :</strong>
-                <div className="d-flex  gap-3">
-                  <span className="shadow-sm py-1 px-4">france</span>
-                  <span className="shadow-sm py-1 px-4">germany</span>
-                  <span className="shadow-sm py-1 px-4">netherlands</span>
+                <div className="d-flex flex-wrap gap-3">
+                  {borderCountries ? (
+                    borderCountries.map((language) => (
+                      <Link to="">
+                        <span className="shadow-sm py-1 px-4 bg-white rounded">
+                          {language}
+                        </span>
+                      </Link>
+                    ))
+                  ) : (
+                    <span className="text-decoration-underline">
+                      No borders country.
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

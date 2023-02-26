@@ -17,6 +17,7 @@ function App() {
       .then((allData) => {
         getData(allData);
         setFiltered(allData);
+        console.log(allData);
       });
   }, []);
 
@@ -24,26 +25,6 @@ function App() {
     setRegion(region);
     getData(filtered.filter((country) => country.region === region));
   }
-
-  // getData((prevData) => {
-  //   if (region !== "") {
-  //     return prevData
-  //       .filter((c) => c.region === region)
-  //       .filter((c) => c)
-  //       .filter(
-  //         (country) =>
-  //           country.name.common
-  //             .toLowerCase()
-  //             .includes(input.trim().toLowerCase()) ||
-  //           (country.capital &&
-  //             country.capital[0]
-  //               .toLowerCase()
-  //               .includes(input.trim().toLowerCase()))
-  //       );
-  //   }
-  //   return prevData;
-  // });
-  //.filter((country) => country.region === region)
 
   function searchCountyBox(input) {
     getData(
