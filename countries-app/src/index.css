@@ -31,7 +31,7 @@
 }
 
 .dark-backGround {
-  background-color: darkblue;
+  background-color: hsl(207, 26%, 17%);
 }
 
 .light-backGround {
@@ -40,12 +40,20 @@
 
 .dark-cards {
   color: white;
-  background-color: rgb(29, 29, 218);
+  background-color: hsl(209, 23%, 22%);
 }
 
 .light-cards {
   color: black;
   background-color: white;
+}
+
+.light-single-card-detail {
+  color: black;
+}
+
+.dark-single-card-detail {
+  color: white;
 }
 
 input.dark-cards::placeholder {

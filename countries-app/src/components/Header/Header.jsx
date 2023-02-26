@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import DarkMode from "../DarkMode/DarkMode";
 
 function Header({ changeTheme, darkMode }) {
@@ -8,7 +9,9 @@ function Header({ changeTheme, darkMode }) {
       }`}
     >
       <div className="container p-0">
-        <h4 className="my-0 py-2">Where in the world?</h4>
+        <h4 className="my-0 py-2 user-select-none">
+          <Link to="/">Where in the world?</Link>
+        </h4>
         <DarkMode changeTheme={changeTheme} darkMode={darkMode} />
       </div>
     </div>

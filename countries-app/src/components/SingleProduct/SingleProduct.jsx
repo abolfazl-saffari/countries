@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function SingleProduct() {
+function SingleProduct({ changeTheme, darkMode }) {
   const params = useParams();
   const [singleCountryData, setSingleCountryData] = useState([]);
   const [nativeName, setNativeName] = useState("");
@@ -33,17 +33,19 @@ function SingleProduct() {
         setBorderCountries(allData[0].borders);
       });
   }, [params.countryName]);
-  console.log(singleCountryData[0]);
-  console.log(languages);
 
   return (
     <>
-      <Header />
+      <Header changeTheme={changeTheme} darkMode={darkMode} />
       <div className="container my-5 p-0">
         <Link to="/">
-          <BackButton />
+          <BackButton changeTheme={changeTheme} darkMode={darkMode} />
         </Link>
-        <div className="row justify-content-between align-items-center">
+        <div
+          className={`row justify-content-between align-items-center ${
+            darkMode ? "dark-single-card-detail" : "light-single-card-detail"
+          }`}
+        >
           <img
             className="col-6 pe-5 p-0"
             src={singleCountryData[0] && singleCountryData[0].flags.png}
@@ -101,7 +103,7 @@ function SingleProduct() {
                   {borderCountries ? (
                     borderCountries.map((language) => (
                       <Link to="">
-                        <span className="shadow-sm py-1 px-4 bg-white rounded">
+                        <span className="shadow-sm py-1 px-4 rounded">
                           {language}
                         </span>
                       </Link>
