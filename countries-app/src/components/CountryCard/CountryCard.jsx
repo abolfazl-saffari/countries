@@ -7,6 +7,7 @@ function CountryCard(props) {
         src={props.countryData.flags.png}
         alt={props.countryData.name.official}
         className="rounded-top-1 card-img"
+        loading="lazy"
       />
       <CountryDetails
         name={props.countryData.name.common}
