@@ -1,0 +1,66 @@
+.card-img {
+  width: 275px;
+  height: 175px;
+  object-fit: fill;
+}
+
+.single-country {
+  width: 550px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.country-name-text-overflow {
+  width: 227px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.country-capital-text-overflow {
+  width: 150px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dark-backGround {
+  background-color: hsl(207, 26%, 17%);
+}
+
+.light-backGround {
+  background-color: gainsboro;
+}
+
+.dark-cards {
+  color: white;
+  background-color: hsl(209, 23%, 22%);
+}
+
+.light-cards {
+  color: black;
+  background-color: white;
+}
+
+.light-single-card-detail {
+  color: black;
+}
+
+.dark-single-card-detail {
+  color: white;
+}
+
+input.dark-cards::placeholder {
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
