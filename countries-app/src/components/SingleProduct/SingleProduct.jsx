@@ -91,8 +91,8 @@ function SingleProduct({ changeTheme, darkMode }) {
                   </p>
                   <p>
                     <strong>languages : </strong>
-                    {languages.map((language) => (
-                      <span>{language}, </span>
+                    {languages.map((language, index) => (
+                      <span key={index}>{language}, </span>
                     ))}
                   </p>
                 </div>
@@ -101,8 +101,8 @@ function SingleProduct({ changeTheme, darkMode }) {
                 <strong className="m-0">border countries :</strong>
                 <div className="d-flex flex-wrap gap-3">
                   {borderCountries ? (
-                    borderCountries.map((language) => (
-                      <Link to="">
+                    borderCountries.map((language, index) => (
+                      <Link to="" key={index}>
                         <span className="shadow-sm py-1 px-4 rounded">
                           {language}
                         </span>

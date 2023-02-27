@@ -16,7 +16,6 @@ function Home({ changeTheme, darkMode }) {
       .then((allData) => {
         getData(allData);
         setFiltered(allData);
-        console.log(allData);
       });
   }, []);
 
